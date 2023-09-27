@@ -13,6 +13,8 @@ jobs:
      -  name: checkout
         uses:  actions/checkout@v3
      -  name: release
-        run: npx semantic-release
+        run:  npm install --save-dev semantic-release
+     -  run:  npm install semantic-release @semantic-release/git @semantic-release/github -D
+     -  run:  npx semantic-release
         env:
            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
