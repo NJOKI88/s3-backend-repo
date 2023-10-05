@@ -2,8 +2,5 @@
 
 source terraform.sh
 
-environment ()
-tfsec 
-dir ()
-plan ()
-testing ()
+environment 
+testing
