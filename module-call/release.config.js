@@ -1,5 +1,5 @@
   module.exports = {
-  branches: ["master", "next"],
+  branches: ["main", "next"],
 
   repositoryUrl: "https://github.com/NJOKI88/s3-backend-repo.git", 
   plugins: [ 
