@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source My functions.sh
+source Myfunctions.sh
 
 PS3="select your workspace [1-3] and press enter: "
 

@@ -20,17 +20,17 @@ test () {
     terraform init
     terraform fmt -recursive
     terraform validate
-    terraform plan -out ./terraform.tfstate.d/$env/$env${TF_PLAN}
-    terraform show -json ./terraform.tfstate.d/$env/$env${TF_PLAN} > ./terraform.tfstate.d/$env/$env${TF_PLAN-JSON}
-    checkov -f ./terraform.tfstate.d/$env/$env${TF_PLAN_JSON}
+    terraform plan -out ./terraform.tfstate.d/$env/${TF_PLAN}
+    terraform show -json ./terraform.tfstate.d/$env/${TF_PLAN} > ./terraform.tfstate.d/$env/$env${TF_PLAN-JSON}
+    checkov -f ./terraform.tfstate.d/$env/${TF_PLAN_JSON}
 }
 
 apply () {
   terraform init
   terraform fmt -recursive
   terraform validate
-  terraform plan -out ./terraform.tfstate.d/$env/$env${TF_PLAN}
-  terraform apply ./terraform.tfstate.d/$env/$env${TF_PLAN}
+  terraform plan -out ./terraform.tfstate.d/$env/${TF_PLAN}
+  terraform apply ./terraform.tfstate.d/$env/${TF_PLAN}
 
 }
 creds () {
@@ -48,8 +48,8 @@ creds () {
 
  [ -d .terraform ] && rm -rf .terraform
 
- if [ -z "${AWS_SECRET_ACCESS_KEY}" ] || [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_DEFAULT_REGION}"]
+ if [ -z "${AWS_SECRET_ACCESS_KEY}" ] || [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_DEFAULT_REGION}" ] || [ -z "${ENVIRONMENT}" ]
     echo "AWS credentials and default region must be set!"
     exit 1
- fi  
+    
 }
